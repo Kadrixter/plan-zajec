@@ -1,5 +1,46 @@
 [
     {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Angielski",
+        "teacher": "Korbka",
+        "room": "20"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Historia",
+        "teacher": "Kruk",
+        "room": "39"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Eksploatacja urządeń",
+        "teacher": "Kaczor daffy",
+        "room": "40"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Eksploatacja urządeń",
+        "teacher": "Kaczor daffy",
+        "room": "40"
+    },
+
+
+    {
         "weekday": "Środa",
         "lessonNumber": 1,
         "start": "07:45",
@@ -70,23 +111,68 @@
         "subject": "Fizyka",
         "teacher": "Olech",
         "room": "24"
+    },    
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Podstawy przedsiębiorczości",
+        "teacher": "Baba od gegry",
+        "room": "39"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Grafika i gry",
+        "teacher": "Kaczor Duffy",
+        "room": "40"
     },
     {
         "weekday": "Czwartek",
         "lessonNumber": 3,
-        "start": "12:50",
-        "end": "13:20",
-        "subject": "test",
-        "teacher": "Juzek",
-        "room": "5"
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Wychowawcza",
+        "teacher": "Kruk",
+        "room": "38"
     },
-        {
+    {
         "weekday": "Czwartek",
         "lessonNumber": 4,
-        "start": "13:22",
-        "end": "13:28",
-        "subject": "test",
-        "teacher": "lewicki",
-        "room": "13"
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Witryny i aplikacje internetowe",
+        "teacher": "Dyrek",
+        "room": "41"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "WF",
+        "teacher": "Skoczek",
+        "room": "Gim"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:55",
+        "subject": "Polski",
+        "teacher": "Prime",
+        "room": "37"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "Angielski",
+        "teacher": "Korbka",
+        "room": "20"
     }
 ]
