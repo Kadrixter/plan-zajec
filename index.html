@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Lekcji</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Plan Lekcji</h1>
+        <div id="timer-container">
+            <span id="timer-text">Do końca lekcji:</span>
+            <span id="timer"></span>
+        </div>
+        <div id="plan"></div>
+        <div id="after-school-message"></div>
+        <div id="after-school-gif"></div>
+        <div id="weekend-message"></div>
+    </div>
+
+    <script>
+        async function loadPlanFromJson() {
+            const response = await fetch('plan.json');
+            const plan = await response.json();
+            return plan;
+        }
+
+        const weekdays = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+
+        async function loadPlanForToday() {
+            const plan = await loadPlanFromJson();
+            const currentDayPlan = plan.filter(item => item.weekday === weekdays[dayOfWeek]);
+
+            if (dayOfWeek === 0 || dayOfWeek === 6) {  // Niedziela (0) i Sobota (6)
+                document.getElementById('plan').innerHTML = '<h2>Wolne</h2>';
+                document.getElementById('timer-container').style.display = 'none';
+                document.getElementById('after-school-message').textContent = '';
+                document.getElementById('weekend-message').innerHTML = '<img src="images/bugs-bunny.gif" alt="Bugs Bunny">';
+            } else {
+                let html = '<table><tr><th>Nr</th><th>Przedmiot</th><th>Godziny</th><th>Nauczyciel</th><th>Klasa</th></tr>';
+                currentDayPlan.forEach(lesson => {
+                    html += `<tr data-lesson="${lesson.lessonNumber}" class="lesson">
+                        <td>${lesson.lessonNumber}</td>
+                        <td>${lesson.subject}</td>
+                        <td>${lesson.start} - ${lesson.end}</td>
+                        <td>${lesson.teacher}</td>
+                        <td>${lesson.room}</td>
+                    </tr>`;
+                });
+                html += '</table>';
+                document.getElementById('plan').innerHTML = html;
+                startTimer(currentDayPlan);
+            }
+        }
+
+        function startTimer(currentDayPlan) {
+            const now = new Date();
+            let nextEndTime = null;
+            let currentLesson = null;
+
+            currentDayPlan.forEach(lesson => {
+                const lessonStart = new Date();
+                const [startHours, startMinutes] = lesson.start.split(':');
+                lessonStart.setHours(startHours, startMinutes, 0, 0);
+
+                const lessonEnd = new Date();
+                const [endHours, endMinutes] = lesson.end.split(':');
+                lessonEnd.setHours(endHours, endMinutes, 0, 0);
+
+                // Podświetlanie aktualnej lekcji
+                if (now >= lessonStart && now <= lessonEnd) {
+                    currentLesson = lesson.lessonNumber;
+                    document.querySelector(`tr[data-lesson="${lesson.lessonNumber}"]`).classList.add('current-lesson');
+                }
+
+                if (now < lessonEnd && (!nextEndTime || lessonEnd < nextEndTime)) {
+                    nextEndTime = lessonEnd;
+                }
+            });
+
+            // Jeśli nie ma lekcji na teraz
+            if (!currentLesson) {
+                document.getElementById('timer-container').style.display = 'none';
+                document.getElementById('after-school-message').textContent = 'Już po lekcjach';
+                document.getElementById('after-school-gif').innerHTML = '<img src="images/pope.gif" alt="Pope">';
+            } else {
+                document.getElementById('timer-container').style.display = 'block';
+                const nextLessonEnd = new Date(nextEndTime);
+                document.getElementById('timer').textContent = `${formatTimeDiff(nextLessonEnd - now)}`;
+
+                const interval = setInterval(() => {
+                    const diff = nextEndTime - new Date();
+                    if (diff <= 0) {
+                        clearInterval(interval);
+                        document.getElementById('timer').textContent = 'Koniec lekcji';
+                        document.querySelector(`tr[data-lesson="${currentLesson}"]`).classList.remove('current-lesson');
+                    } else {
+                        document.getElementById('timer').textContent = `${formatTimeDiff(diff)}`;
+                    }
+                }, 1000);
+            }
+        }
+
+        function formatTimeDiff(diff) {
+            const minutes = Math.floor(diff / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            return `${minutes}m ${seconds}s`;
+        }
+
+        window.onload = loadPlanForToday;
+    </script>
+</body>
+</html>
