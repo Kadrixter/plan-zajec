@@ -38,6 +38,7 @@
         "teacher": "Kaczor daffy",
         "room": "40"
     },
+    {
         "weekday": "Poniedziałek",
         "lessonNumber": 5,
         "start": "11:10",
@@ -46,6 +47,7 @@
         "teacher": "Greta",
         "room": "45"
     },
+    {
         "weekday": "Poniedziałek",
         "lessonNumber": 6,
         "start": "12:05",
@@ -54,6 +56,7 @@
         "teacher": "Gigachead",
         "room": "28"
     },
+    {
         "weekday": "Poniedziałek",
         "lessonNumber": 7,
         "start": "12:55",
@@ -62,6 +65,7 @@
         "teacher": "Grabcia",
         "room": "41"
     },
+    {
         "weekday": "Poniedziałek",
         "lessonNumber": 8,
         "start": "13:45",
