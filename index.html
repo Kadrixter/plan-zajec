@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan Lekcji</title>
+    
+    <!-- Meta tagi Open Graph -->
+    <meta property="og:title" content="Plan Lekcji">
+    <meta property="og:description" content="Sprawdź swój plan lekcji i czas do końca zajęć.">
+    <meta property="og:image" content="https://example.com/images/preview-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,6 +68,7 @@
             const now = new Date();
             let nextEndTime = null;
             let currentLesson = null;
+            let lastLessonEnd = null;
 
             currentDayPlan.forEach(lesson => {
                 const lessonStart = new Date();
@@ -70,7 +79,10 @@
                 const [endHours, endMinutes] = lesson.end.split(':');
                 lessonEnd.setHours(endHours, endMinutes, 0, 0);
 
-                // Podświetlanie aktualnej lekcji
+                if (!lastLessonEnd || lessonEnd > lastLessonEnd) {
+                    lastLessonEnd = lessonEnd; // Zapisz czas zakończenia ostatniej lekcji
+                }
+
                 if (now >= lessonStart && now <= lessonEnd) {
                     currentLesson = lesson.lessonNumber;
                     document.querySelector(`tr[data-lesson="${lesson.lessonNumber}"]`).classList.add('current-lesson');
@@ -81,12 +93,16 @@
                 }
             });
 
-            // Jeśli nie ma lekcji na teraz
-            if (!currentLesson) {
+            if (now > lastLessonEnd) {
+                // Wszystkie lekcje skończyły się
                 document.getElementById('timer-container').style.display = 'none';
                 document.getElementById('after-school-message').textContent = 'Już po lekcjach';
                 document.getElementById('after-school-gif').innerHTML = '<img src="images/pope.gif" alt="Pope">';
+            } else if (!currentLesson) {
+                // Przed rozpoczęciem pierwszej lekcji
+                document.getElementById('timer-container').style.display = 'none';
             } else {
+                // Podświetlanie bieżącej lekcji i odliczanie do jej końca
                 document.getElementById('timer-container').style.display = 'block';
                 const nextLessonEnd = new Date(nextEndTime);
                 document.getElementById('timer').textContent = `${formatTimeDiff(nextLessonEnd - now)}`;
