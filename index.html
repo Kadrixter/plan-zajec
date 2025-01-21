@@ -190,15 +190,12 @@
             });
 
             if (now > lastLessonEnd) {
-                // Wszystkie lekcje skończyły się
                 document.getElementById('timer-container').style.display = 'none';
                 document.getElementById('after-school-message').textContent = 'Już po lekcjach';
                 document.getElementById('after-school-gif').innerHTML = '<img src="images/pope.gif" alt="Pope">';
             } else if (!currentLesson) {
-                // Przed rozpoczęciem pierwszej lekcji
                 document.getElementById('timer-container').style.display = 'none';
             } else {
-                // Podświetlanie bieżącej lekcji i odliczanie do jej końca
                 document.getElementById('timer-container').style.display = 'block';
                 const nextLessonEnd = new Date(nextEndTime);
                 document.getElementById('timer').textContent = `${formatTimeDiff(nextLessonEnd - now)}`;
@@ -208,21 +205,19 @@
                     if (diff <= 0) {
                         clearInterval(interval);
 
-                        // Usuń podświetlenie aktualnej lekcji
                         document.querySelector(`tr[data-lesson="${currentLesson}"]`).classList.remove('current-lesson');
 
-                        // Wyślij powiadomienie o następnej lekcji
                         const nextLesson = currentDayPlan.find(lesson => {
                             const lessonStart = new Date();
                             const [startHours, startMinutes] = lesson.start.split(':');
                             lessonStart.setHours(startHours, startMinutes, 0, 0);
-                            return new Date() < lessonStart; // Znajdź lekcję, która jeszcze się nie zaczęła
+                            return new Date() < lessonStart;
                         });
 
                         if (nextLesson) {
                             showNotification(
-                                'Następna lekcja!',
-                                `Rozpocznie się ${nextLesson.subject} o ${nextLesson.start}.`
+                                'Zaraz zacznie się lekcja!',
+                                `Zaraz zacznie się ${nextLesson.subject} w sali ${nextLesson.room}.`
                             );
                         } else {
                             showNotification('Plan zakończony', 'Dzisiaj nie ma więcej lekcji.');
@@ -240,16 +235,15 @@
             return `${minutes}m ${seconds}s`;
         }
 
-        // Obsługa powiadomień
         function requestNotificationPermission() {
             if ('Notification' in window) {
                 Notification.requestPermission().then(permission => {
                     if (permission === 'granted') {
                         localStorage.setItem('notificationsEnabled', 'true');
                         document.getElementById('notification-btn').classList.add('hidden');
-                        // Wyślij testowe powiadomienie
                         showNotification(
                             'Powiadomienia włączone!',
+                            'Twoje powiadomienia są aktywne.',
                             'https://zapodaj.net/images/35ab964e2035c.jpg'
                         );
                     } else {
@@ -268,7 +262,6 @@
             }
         }
 
-        // Sprawdź, czy powiadomienia były już aktywowane
         window.onload = () => {
             const notificationsEnabled = localStorage.getItem('notificationsEnabled');
             if (notificationsEnabled !== 'true') {
