@@ -5,13 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan Lekcji</title>
     
+    <!-- Meta tagi Open Graph -->
     <meta property="og:title" content="Plan Lekcji">
     <meta property="og:description" content="Sprawdź swój plan lekcji i nie tylko!">
     <meta property="og:image" content="https://downloadwap.com/thumbs2/wallpapers/2022/p2/abstract/47/b5l55669.jpg">
     <meta property="og:url" content="https://downloadwap.com/thumbs2/wallpapers/2022/p2/abstract/47/b5l55669.jpg">
     <meta property="og:type" content="website">
-    
+
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Czarny motyw */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/862/804/16/simple-simple-background-black-background-portal-game-wallpaper-preview.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #e0e0e0;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background-color: rgba(30, 30, 30, 0.9);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(30, 30, 30, 0.9);
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        td {
+            color: #e0e0e0;
+        }
+
+        .current-lesson {
+            background-color: #3e3e3e;
+        }
+
+        a {
+            color: #90caf9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .notification-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-btn:hover {
+            background-color: #444;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #timer-container {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #222;
+            text-align: center;
+        }
+
+        #timer-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <div id="container">
@@ -25,7 +122,156 @@
         <div id="after-school-gif"></div>
         <div id="weekend-message"></div>
     </div>
+
+    <!-- Przycisk powiadomień -->
     <button id="notification-btn" class="notification-btn" onclick="requestNotificationPermission()">Włącz powiadomienia</button>
-    <script src="script.js"></script>
+
+    <script>
+        async function loadPlanFromJson() {
+            const response = await fetch('plan.json');
+            const plan = await response.json();
+            return plan;
+        }
+
+        const weekdays = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+
+        async function loadPlanForToday() {
+            const plan = await loadPlanFromJson();
+            const currentDayPlan = plan.filter(item => item.weekday === weekdays[dayOfWeek]);
+
+            if (dayOfWeek === 0 || dayOfWeek === 6) {  // Niedziela (0) i Sobota (6)
+                document.getElementById('plan').innerHTML = '<h2>Wolne</h2>';
+                document.getElementById('timer-container').style.display = 'none';
+                document.getElementById('after-school-message').textContent = '';
+                document.getElementById('weekend-message').innerHTML = '<img src="images/bugs-bunny.gif" alt="Bugs Bunny">';
+            } else {
+                let html = '<table><tr><th>Nr</th><th>Przedmiot</th><th>Godziny</th><th>Nauczyciel</th><th>Klasa</th></tr>';
+                currentDayPlan.forEach(lesson => {
+                    html += <tr data-lesson="${lesson.lessonNumber}" class="lesson">
+                        <td>${lesson.lessonNumber}</td>
+                        <td>${lesson.subject}</td>
+                        <td>${lesson.start} - ${lesson.end}</td>
+                        <td>${lesson.teacher}</td>
+                        <td>${lesson.room}</td>
+                    </tr>;
+                });
+                html += '</table>';
+                document.getElementById('plan').innerHTML = html;
+                startTimer(currentDayPlan);
+            }
+        }
+
+        function startTimer(currentDayPlan) {
+            const now = new Date();
+            let nextEndTime = null;
+            let currentLesson = null;
+            let lastLessonEnd = null;
+
+            currentDayPlan.forEach(lesson => {
+                const lessonStart = new Date();
+                const [startHours, startMinutes] = lesson.start.split(':');
+                lessonStart.setHours(startHours, startMinutes, 0, 0);
+
+                const lessonEnd = new Date();
+                const [endHours, endMinutes] = lesson.end.split(':');
+                lessonEnd.setHours(endHours, endMinutes, 0, 0);
+
+                if (!lastLessonEnd || lessonEnd > lastLessonEnd) {
+                    lastLessonEnd = lessonEnd; // Zapisz czas zakończenia ostatniej lekcji
+                }
+
+                if (now >= lessonStart && now <= lessonEnd) {
+                    currentLesson = lesson.lessonNumber;
+                    document.querySelector(tr[data-lesson="${lesson.lessonNumber}"]).classList.add('current-lesson');
+                }
+
+                if (now < lessonEnd && (!nextEndTime || lessonEnd < nextEndTime)) {
+                    nextEndTime = lessonEnd;
+                }
+            });
+
+            if (now > lastLessonEnd) {
+                document.getElementById('timer-container').style.display = 'none';
+                document.getElementById('after-school-message').textContent = 'Już po lekcjach';
+                document.getElementById('after-school-gif').innerHTML = '<img src="images/pope.gif" alt="Pope">';
+            } else if (!currentLesson) {
+                document.getElementById('timer-container').style.display = 'none';
+            } else {
+                document.getElementById('timer-container').style.display = 'block';
+                const nextLessonEnd = new Date(nextEndTime);
+                document.getElementById('timer').textContent = ${formatTimeDiff(nextLessonEnd - now)};
+
+                const interval = setInterval(() => {
+                    const diff = nextEndTime - new Date();
+                    if (diff <= 0) {
+                        clearInterval(interval);
+
+                        document.querySelector(tr[data-lesson="${currentLesson}"]).classList.remove('current-lesson');
+
+                        const nextLesson = currentDayPlan.find(lesson => {
+                            const lessonStart = new Date();
+                            const [startHours, startMinutes] = lesson.start.split(':');
+                            lessonStart.setHours(startHours, startMinutes, 0, 0);
+                            return new Date() < lessonStart;
+                        });
+
+                        if (nextLesson) {
+                            showNotification(
+                                'Zaraz zacznie się lekcja!',
+                                Zaraz zacznie się ${nextLesson.subject} w sali ${nextLesson.room}.
+                            );
+                        } else {
+                            showNotification('Plan zakończony', 'Dzisiaj nie ma więcej lekcji.');
+                        }
+                    } else {
+                        document.getElementById('timer').textContent = ${formatTimeDiff(diff)};
+                    }
+                }, 1000);
+            }
+        }
+
+        function formatTimeDiff(diff) {
+            const minutes = Math.floor(diff / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            return ${minutes}m ${seconds}s;
+        }
+
+        function requestNotificationPermission() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        localStorage.setItem('notificationsEnabled', 'true');
+                        document.getElementById('notification-btn').classList.add('hidden');
+                        showNotification(
+                            'Powiadomienia włączone!',
+                            'Twoje powiadomienia są aktywne.',
+                            'https://zapodaj.net/images/35ab964e2035c.jpg'
+                        );
+                    } else {
+                        localStorage.setItem('notificationsEnabled', 'false');
+                    }
+                });
+            }
+        }
+
+        function showNotification(title, body, icon = 'https://zapodaj.net/images/35ab964e2035c.jpg') {
+            if (Notification.permission === 'granted') {
+                new Notification(title, {
+                    body: body,
+                    icon: icon
+                });
+            }
+        }
+
+        window.onload = () => {
+            const notificationsEnabled = localStorage.getItem('notificationsEnabled');
+            if (notificationsEnabled !== 'true') {
+                document.getElementById('notification-btn').style.display = 'block';
+            }
+            loadPlanForToday();
+        };
+    </script>
 </body>
 </html>
