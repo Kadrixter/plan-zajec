@@ -134,7 +134,7 @@ function requestNotificationPermission() {
                 showNotification(
                     'Powiadomienia włączone!',
                     'Twoje powiadomienia są aktywne.',
-                    'images/notification.png'
+                    'https://cdn.discordapp.com/attachments/1315574271682154506/1331379430852919296/image.png?ex=67916738&is=679015b8&hm=9375980dcdee4d37c065e9ab1e84ce325a28becc6fef3249a9924f302bfd73a3&'
                 );
             } else {
                 localStorage.setItem('notificationsEnabled', 'false');
@@ -143,7 +143,7 @@ function requestNotificationPermission() {
     }
 }
 
-function showNotification(title, body, icon = 'images/notification.png') {
+function showNotification(title, body, icon = 'https://cdn.discordapp.com/attachments/1315574271682154506/1331379430852919296/image.png?ex=67916738&is=679015b8&hm=9375980dcdee4d37c065e9ab1e84ce325a28becc6fef3249a9924f302bfd73a3&') {
     if (Notification.permission === 'granted') {
         new Notification(title, {
             body: body,
