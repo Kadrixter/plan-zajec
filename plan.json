@@ -7,7 +7,8 @@
         "subject": "Angielski",
         "teacher": "Korbka",
         "room": "20"
-    },
+    },
+
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 2,
@@ -16,7 +17,8 @@
         "subject": "Hit",
         "teacher": "Kruk",
         "room": "39"
-    },
+    },
+
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 3,
@@ -25,7 +27,8 @@
         "subject": "Eksploatacja urządeń",
         "teacher": "Kaczor daffy",
         "room": "40"
-    },
+    },
+
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 4,
@@ -114,7 +117,7 @@
         "end": "11:55",
         "subject": "Tworzenie stron",
         "teacher": "Dyrek",
-        "room": "28"
+        "room": "41"
     },
     {
         "weekday": "Wtorek",
@@ -134,7 +137,8 @@
         "teacher": "Kryska",
         "room": "Gim"
     },
-   {
+
+   {
         "weekday": "Środa",
         "lessonNumber": 1,
         "start": "07:45",
@@ -221,7 +225,7 @@
         "start": "08:35",
         "end": "09:20",
         "subject": "Grafika i gry",
-        "teacher": "Kaczor Duffy",
+        "teacher": "Kaczor Daffy",
         "room": "40"
     },
     {
