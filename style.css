@@ -1,69 +1,112 @@
+/* Czarny motyw */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #fff;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('images/background.jpg'); /* Dodanie tła jako zdjęcie */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #e0e0e0;
 }
 
 #container {
     max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 20px auto;
+    padding: 60px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background-color: #1e1e1e8f;
+    text-align: center; /* Wyśrodkowanie tekstu */
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+@media (max-width: 767px) {
+    #container {
+        padding: 20px; /* Zmiana padding dla urządzeń mobilnych */
+    }
 }
 
 table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #fff;
+    background-color: #1e1e1e;
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
 }
 
 th {
     background-color: #333;
+    color: #e0e0e0;
 }
 
-tr.current-lesson {
-    background-color: #ff9800;
+td {
+    color: #e0e0e0;
+}
+
+.current-lesson {
+    background-color: #ff9800; /* Podświetlenie aktualnej lekcji */
+}
+
+a {
+    color: #90caf9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.notification-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification-btn:hover {
+    background-color: #444;
+}
+
+.hidden {
+    display: none;
 }
 
 #timer-container {
-    margin-top: 20px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #222;
+    text-align: center;
 }
 
 #timer-text {
-    font-size: 1.2rem;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 #timer {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 20px; /* Pogrubienie timera */
+    font-weight: bold; /* Pogrubienie timera */
 }
 
 #after-school-message {
-    font-size: 1.5rem;
-    color: #f44336;
-    margin-top: 20px;
-}
-
-#weekend-message {
-    margin-top: 20px;
-}
-
-#weekend-message img, #after-school-message img {
-    max-width: 200px;
-    margin-top: 10px;
+    font-weight: bold; /* Pogrubienie tekstu */
+    color: red; /* Kolor czerwony */
+    font-size: 30px;
 }
