@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Czarny motyw */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,35 +22,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
         #container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            background-color: #f9f9f9;
+            background-color: #1e1e1e;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            background-color: #1e1e1e;
         }
 
         th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #333;
             padding: 8px;
             text-align: center;
         }
 
         th {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        td {
+            color: #e0e0e0;
         }
 
         .current-lesson {
-            background-color: #ffeb3b;
+            background-color: #3e3e3e;
+        }
+
+        a {
+            color: #90caf9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         .notification-btn {
@@ -57,8 +74,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #333;
+            color: #e0e0e0;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
@@ -68,11 +85,25 @@
         }
 
         .notification-btn:hover {
-            background-color: #45a049;
+            background-color: #444;
         }
 
         .hidden {
             display: none;
+        }
+
+        #timer-container {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #222;
+            text-align: center;
+        }
+
+        #timer-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -216,6 +247,12 @@
                     if (permission === 'granted') {
                         localStorage.setItem('notificationsEnabled', 'true');
                         document.getElementById('notification-btn').classList.add('hidden');
+                        // Wyślij testowe powiadomienie
+                        showNotification(
+                            'Powiadomienia włączone!',
+                            'Twoje powiadomienia są aktywne.',
+                            'https://zapodaj.net/images/35ab964e2035c.jpg'
+                        );
                     } else {
                         localStorage.setItem('notificationsEnabled', 'false');
                     }
@@ -223,11 +260,11 @@
             }
         }
 
-        function showNotification(title, body, icon = null) {
+        function showNotification(title, body, icon = 'https://zapodaj.net/images/35ab964e2035c.jpg') {
             if (Notification.permission === 'granted') {
                 new Notification(title, {
                     body: body,
-                    icon: icon // Opcjonalnie: URL do ikonki
+                    icon: icon
                 });
             }
         }
