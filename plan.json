@@ -53,7 +53,7 @@
         "start": "12:05",
         "end": "12:50",
         "subject": "Lsk",
-        "teacher": "Gigachead",
+        "teacher": "Gigachad",
         "room": "28"
     },
     {
@@ -116,7 +116,7 @@
         "start": "11:10",
         "end": "11:55",
         "subject": "Tworzenie stron",
-        "teacher": "Dyrek",
+        "teacher": "Gigachad",
         "room": "41"
     },
     {
@@ -207,7 +207,7 @@
         "start": "13:45",
         "end": "14:30",
         "subject": "Fizyka",
-        "teacher": "Olech",
+        "teacher": "Teletubis",
         "room": "24"
     },    
     {
@@ -279,7 +279,7 @@
         "start": "07:45",
         "end": "08:30",
         "subject": "Miklsk",
-        "teacher": "Gigachead",
+        "teacher": "Gigachad",
         "room": "28"
     },
     {
@@ -306,7 +306,7 @@
         "start": "10:20",
         "end": "11:05",
         "subject": "Chemia",
-        "teacher": "Rychlik",
+        "teacher": "Teletubis",
         "room": "24"
     },
     {
@@ -315,7 +315,7 @@
         "start": "11:10",
         "end": "11:55",
         "subject": "Lsk",
-        "teacher": "Gigachead",
+        "teacher": "Gigachad",
         "room": "28"
     },
     {
@@ -337,4 +337,3 @@
         "room": "27"
     }
 ]
-
