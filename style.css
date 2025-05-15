@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #7761ff;
+  --primary-light: #9d8dff;
+  --accent: #ff6b6b;
+  --text-light: #f5f5f5;
+  --text-dark: #333;
+  --bg-dark: rgba(15, 15, 25, 0.85);
+  --bg-card: rgba(30, 30, 45, 0.9);
+  --bg-lesson: rgba(45, 45, 65, 0.95);
+  --bg-current: rgba(119, 97, 255, 0.25);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --border-radius: 15px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0911;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(30, 30, 50, 0.8) 100%);
+  z-index: -1;
+}
+
+#container {
+max-width: 680;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-dark);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--text-light);
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  background: var(--primary);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+#timer-container {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-card);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--primary);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(119, 97, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(119, 97, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(119, 97, 255, 0);
+  }
+}
+
+#timer-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-right: 10px;
+  color: var(--text-light);
+}
+
+#timer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  display: inline-block;
+  min-width: 90px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin: 20px 0;
+}
+
+th {
+  background-color: var(--primary);
+  color: var(--text-light);
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+}
+
+th:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+th:last-child {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+td {
+  padding: 15px 10px;
+  color: var(--text-light);
+  background-color: var(--bg-lesson);
+  transition: var(--transition);
+}
+
+tr.lesson {
+  transition: var(--transition);
+}
+
+tr.lesson:hover td {
+  background-color: rgba(60, 60, 85, 0.95);
+  transform: translateY(-2px);
+}
+
+tr.lesson td:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+tr.lesson td:last-child {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.current-lesson td {
+  background-color: var(--bg-current);
+}
+
+.current-lesson td:first-child {
+  border-left: 3px solid var(--primary);
+}
+
+#after-school-message {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.8rem;
+  margin: 30px 0;
+  animation: fade 2s ease-in-out infinite alternate;
+}
+
+@keyframes fade {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+#after-school-gif,
+#weekend-message {
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+#after-school-gif img,
+#weekend-message img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  display: block;
+}
+
+.notification-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+}
+
+.notification-btn::before {
+  content: '🔔';
+  font-size: 1.2rem;
+}
+
+.notification-btn:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Styl dla dni wolnych */
+h2 {
+  font-size: 2rem;
+  margin: 30px 0;
+  color: var(--primary-light);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  #container {
+    padding: 20px 15px;
+    margin: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: 10px 5px;
+  }
+  
+  #timer {
+    font-size: 1.2rem;
+  }
+  
+  .notification-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+  }
+}

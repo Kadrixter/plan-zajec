@@ -1,0 +1,339 @@
+[
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Angielski",
+        "teacher": "Korbka",
+        "room": "20"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Hit",
+        "teacher": "Kruk",
+        "room": "39"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Eksploatacja urządeń",
+        "teacher": "Kaczor daffy",
+        "room": "40"
+    },
+
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Eksploatacja urządeń",
+        "teacher": "Kaczor daffy",
+        "room": "40"
+    },
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "Niemiecki",
+        "teacher": "Greta",
+        "room": "45"
+    },
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:50",
+        "subject": "Lsk",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "Informatyka",
+        "teacher": "Grabcia",
+        "room": "41"
+    },
+    {
+        "weekday": "Poniedziałek",
+        "lessonNumber": 8,
+        "start": "13:45",
+        "end": "14:30",
+        "subject": "Wf",
+        "teacher": "Skoczek",
+        "room": "gim"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Matematyka",
+        "teacher": "Rechotka",
+        "room": "27"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Informatyka",
+        "teacher": "Grabcia",
+        "room": "41"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Niemiecki",
+        "teacher": "Greta",
+        "room": "45"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Systemy baz",
+        "teacher": "Dyrek",
+        "room": "41"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "Tworzenie stron",
+        "teacher": "Gigachad",
+        "room": "41"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:50",
+        "subject": "Biologia",
+        "teacher": "Pamka",
+        "room": "27"
+    },
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "WF",
+        "teacher": "Kryska",
+        "room": "Gim"
+    },
+
+   {
+        "weekday": "Środa",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Mik lsk",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Mik lsk",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Tworzenie stron",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Tworzenie stron",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "Historia",
+        "teacher": "Kryk",
+        "room": "27"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:55",
+        "subject": "J.Polski",
+        "teacher": "Prime",
+        "room": "37"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "Matma",
+        "teacher": "Rechotka",
+        "room": "27"
+    },
+    {
+        "weekday": "Środa",
+        "lessonNumber": 8,
+        "start": "13:45",
+        "end": "14:30",
+        "subject": "Fizyka",
+        "teacher": "Teletubis",
+        "room": "24"
+    },    
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Podstawy przedsiębiorczości",
+        "teacher": "Baba od gegry",
+        "room": "39"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Grafika i gry",
+        "teacher": "Kaczor Daffy",
+        "room": "40"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Wychowawcza",
+        "teacher": "Kruk",
+        "room": "38"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Witryny i aplikacje",
+        "teacher": "Dyrek",
+        "room": "41"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "WF",
+        "teacher": "Skoczek",
+        "room": "Gim"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:55",
+        "subject": "Polski",
+        "teacher": "Prime",
+        "room": "37"
+    },
+    {
+        "weekday": "Czwartek",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "Angielski",
+        "teacher": "Korbka",
+        "room": "20"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 1,
+        "start": "07:45",
+        "end": "08:30",
+        "subject": "Miklsk",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 2,
+        "start": "08:35",
+        "end": "09:20",
+        "subject": "Polski",
+        "teacher": "Prime",
+        "room": "37"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 3,
+        "start": "09:25",
+        "end": "10:10",
+        "subject": "Geografia",
+        "teacher": "Agresor",
+        "room": "39"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 4,
+        "start": "10:20",
+        "end": "11:05",
+        "subject": "Chemia",
+        "teacher": "Teletubis",
+        "room": "24"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 5,
+        "start": "11:10",
+        "end": "11:55",
+        "subject": "Lsk",
+        "teacher": "Gigachad",
+        "room": "28"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 6,
+        "start": "12:05",
+        "end": "12:50",
+        "subject": "Matematyka",
+        "teacher": "Rechotka",
+        "room": "27"
+    },
+    {
+        "weekday": "Piątek",
+        "lessonNumber": 7,
+        "start": "12:55",
+        "end": "13:40",
+        "subject": "Matematyka",
+        "teacher": "Rechotka",
+        "room": "27"
+    }
+]

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Lekcji</title>
+    
+    <!-- Meta tagi Open Graph -->
+    <meta property="og:title" content="Plan Zajęć">
+    <meta property="og:description" content="Sprawdź swój plan lekcji i nie tylko!">
+    <meta property="og:image" content="https://example.com/images/preview-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <div id="container">
+        <h1>Plan Lekcji</h1>
+        <div id="timer-container">
+            <span id="timer-text">Do końca lekcji pozostało:</span>
+            <span id="timer"></span>
+        </div>
+        <div id="plan"></div>
+        <div id="after-school-message"></div>
+        <div id="after-school-gif"></div>
+        <div id="weekend-message"></div>
+    </div>
+
+    <!-- Przycisk powiadomień -->
+    <button id="notification-btn" class="notification-btn" onclick="requestNotificationPermission()">Włącz powiadomienia</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
