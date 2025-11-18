@@ -1,113 +1,111 @@
 [
+[
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 1,
         "start": "07:45",
         "end": "08:30",
-        "subject": "Angielski",
-        "teacher": "Korbka",
-        "room": "20"
+        "subject": "Wychowanie fizyczne",
+        "teacher": "Kryska",
+        "room": "Sił"
     },
-
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 2,
         "start": "08:35",
         "end": "09:20",
-        "subject": "Hit",
-        "teacher": "Kruk",
-        "room": "39"
+        "subject": "Język angielski",
+        "teacher": "Korbka",
+        "room": "20"
     },
-
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 3,
         "start": "09:25",
         "end": "10:10",
-        "subject": "Eksploatacja urządeń",
-        "teacher": "Kaczor daffy",
-        "room": "40"
+        "subject": "Biologia",
+        "teacher": "Pamka",
+        "room": "24"
     },
-
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 4,
         "start": "10:20",
         "end": "11:05",
-        "subject": "Eksploatacja urządeń",
-        "teacher": "Kaczor daffy",
-        "room": "40"
+        "subject": "Geografia",
+        "teacher": "Agressor",
+        "room": "38"
     },
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 5,
         "start": "11:10",
         "end": "11:55",
-        "subject": "Niemiecki",
+        "subject": "Język polski",
         "teacher": "Greta",
-        "room": "45"
+        "room": "37"
     },
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 6,
         "start": "12:05",
         "end": "12:50",
-        "subject": "Lsk",
-        "teacher": "Gigachad",
-        "room": "28"
+        "subject": "Chemia",
+        "teacher": "Rechotka",
+        "room": "24"
     },
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 7,
         "start": "12:55",
         "end": "13:40",
-        "subject": "Informatyka",
-        "teacher": "Grabcia",
-        "room": "41"
+        "subject": "WIAI",
+        "teacher": "Czarek",
+        "room": "28"
     },
     {
         "weekday": "Poniedziałek",
         "lessonNumber": 8,
         "start": "13:45",
         "end": "14:30",
-        "subject": "Wf",
-        "teacher": "Skoczek",
-        "room": "gim"
+        "subject": "Systemy baz danych",
+        "teacher": "Dyrek",
+        "room": "40"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 1,
         "start": "07:45",
         "end": "08:30",
-        "subject": "Matematyka",
-        "teacher": "Rechotka",
-        "room": "27"
+        "subject": "Język niemiecki",
+        "teacher": "Greta",
+        "room": "45"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 2,
         "start": "08:35",
         "end": "09:20",
-        "subject": "Informatyka",
-        "teacher": "Grabcia",
-        "room": "41"
+        "subject": "Matematyka",
+        "teacher": "Rechotka",
+        "room": "27"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 3,
         "start": "09:25",
         "end": "10:10",
-        "subject": "Niemiecki",
-        "teacher": "Greta",
-        "room": "45"
+        "subject": "Zajęcia z wychowawcą",
+        "teacher": "Grabcia",
+        "room": "39"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 4,
         "start": "10:20",
         "end": "11:05",
-        "subject": "Systemy baz",
-        "teacher": "Dyrek",
+        "subject": "WIAI",
+        "teacher": "Czarek",
         "room": "41"
     },
     {
@@ -115,30 +113,38 @@
         "lessonNumber": 5,
         "start": "11:10",
         "end": "11:55",
-        "subject": "Tworzenie stron",
-        "teacher": "Gigachad",
-        "room": "41"
+        "subject": "Matematyka",
+        "teacher": "Rechotka",
+        "room": "27"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 6,
         "start": "12:05",
         "end": "12:50",
-        "subject": "Biologia",
-        "teacher": "Pamka",
-        "room": "27"
+        "subject": "Wychowanie fizyczne",
+        "teacher": "Kryska",
+        "room": "Sił"
     },
     {
         "weekday": "Wtorek",
         "lessonNumber": 7,
         "start": "12:55",
         "end": "13:40",
-        "subject": "WF",
-        "teacher": "Kryska",
-        "room": "Gim"
+        "subject": "Projektowanie baz danych",
+        "teacher": "Czarek",
+        "room": "41"
     },
-
-   {
+    {
+        "weekday": "Wtorek",
+        "lessonNumber": 8,
+        "start": "13:45",
+        "end": "14:30",
+        "subject": "Projektowanie baz danych",
+        "teacher": "Czarek",
+        "room": "41"
+    },
+    {
         "weekday": "Środa",
         "lessonNumber": 1,
         "start": "07:45",
