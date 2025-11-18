@@ -4,7 +4,7 @@
         "lessonNumber": 1,
         "start": "07:45",
         "end": "08:30",
-        "subject": "Wychowanie fizyczne",
+        "subject": "WF",
         "teacher": "Kryska",
         "room": "Sił"
     },
@@ -13,7 +13,7 @@
         "lessonNumber": 2,
         "start": "08:35",
         "end": "09:20",
-        "subject": "Język angielski",
+        "subject": "Angielski",
         "teacher": "Korbka",
         "room": "20"
     },
@@ -40,7 +40,7 @@
         "lessonNumber": 5,
         "start": "11:10",
         "end": "11:55",
-        "subject": "Język polski",
+        "subject": "Polski",
         "teacher": "Greta",
         "room": "37"
     },
@@ -76,7 +76,7 @@
         "lessonNumber": 1,
         "start": "07:45",
         "end": "08:30",
-        "subject": "Język niemiecki",
+        "subject": "Niemiecki",
         "teacher": "Greta",
         "room": "45"
     },
@@ -94,7 +94,7 @@
         "lessonNumber": 3,
         "start": "09:25",
         "end": "10:10",
-        "subject": "Zajęcia z wychowawcą",
+        "subject": "Wychowawcza",
         "teacher": "Grabcia",
         "room": "39"
     },
@@ -121,7 +121,7 @@
         "lessonNumber": 6,
         "start": "12:05",
         "end": "12:50",
-        "subject": "Wychowanie fizyczne",
+        "subject": "WF",
         "teacher": "Kryska",
         "room": "Sił"
     },
@@ -193,7 +193,7 @@
         "lessonNumber": 6,
         "start": "12:05",
         "end": "12:55",
-        "subject": "J.Polski",
+        "subject": "Polski",
         "teacher": "Prime",
         "room": "37"
     },
@@ -202,7 +202,7 @@
         "lessonNumber": 7,
         "start": "12:55",
         "end": "13:40",
-        "subject": "Matma",
+        "subject": "Matematyka",
         "teacher": "Rechotka",
         "room": "27"
     },
@@ -283,7 +283,7 @@
         "lessonNumber": 1,
         "start": "07:45",
         "end": "08:30",
-        "subject": "Miklsk",
+        "subject": "Mik lsk",
         "teacher": "Gigachad",
         "room": "28"
     },
