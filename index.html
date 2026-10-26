@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Plan Lekcji</title>
-    
+    <meta name="theme-color" content="#7761ff">
+
     <!-- Meta tagi Open Graph -->
     <meta property="og:title" content="Plan Zajęć">
     <meta property="og:description" content="Sprawdź swój plan lekcji i nie tylko!">
@@ -13,24 +13,40 @@
     <meta property="og:url" content="https://example.com">
     <meta property="og:type" content="website">
 
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body>
-    <div id="container">
+    <main id="container">
         <h1>Plan Lekcji</h1>
-        <div id="timer-container">
-            <span id="timer-text">Do końca lekcji pozostało:</span>
-            <span id="timer"></span>
-        </div>
-        <div id="plan"></div>
-        <div id="after-school-message"></div>
-        <div id="after-school-gif"></div>
-        <div id="weekend-message"></div>
-    </div>
+
+        <nav id="tabs" aria-label="Dni tygodnia"></nav>
+
+        <section id="status" aria-live="polite">
+            <div id="after-school-message"></div>
+            <div id="after-school-gif"></div>
+            <div id="weekend-message"></div>
+        </section>
+
+        <section id="timer-container" hidden>
+            <div id="timer-text"></div>
+            <div id="timer"></div>
+            <div id="progress" hidden><div id="progress-bar"></div></div>
+            <div id="timer-next"></div>
+        </section>
+
+        <section id="plan">
+            <h2 id="plan-title"></h2>
+            <div id="lessons"></div>
+        </section>
+    </main>
 
     <!-- Przycisk powiadomień -->
-    <button id="notification-btn" class="notification-btn" onclick="requestNotificationPermission()">Włącz powiadomienia</button>
+    <button id="notification-btn" class="notification-btn hidden" type="button" onclick="requestNotificationPermission()">Włącz powiadomienia</button>
 
     <script src="script.js"></script>
 </body>
