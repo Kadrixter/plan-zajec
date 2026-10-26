@@ -1,18 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
+  color-scheme: dark light;
+
   --primary: #7761ff;
   --primary-light: #9d8dff;
   --accent: #ff6b6b;
-  --text-light: #f5f5f5;
-  --text-dark: #333;
-  --bg-dark: rgba(15, 15, 25, 0.85);
+
+  --bg: #0a0911;
+  --overlay: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(30, 30, 50, 0.8) 100%);
+  --bg-container: rgba(15, 15, 25, 0.85);
   --bg-card: rgba(30, 30, 45, 0.9);
   --bg-lesson: rgba(45, 45, 65, 0.95);
-  --bg-current: rgba(119, 97, 255, 0.25);
+  --bg-current: rgba(119, 97, 255, 0.22);
+  --text: #f5f5f5;
+  --muted: #a9a6c2;
+  --track: rgba(255, 255, 255, 0.12);
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  --border-radius: 15px;
+
+  --radius: 15px;
   --transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f3f2fa;
+    --overlay: linear-gradient(135deg, rgba(243, 242, 250, 0.9) 0%, rgba(226, 223, 245, 0.8) 100%);
+    --bg-container: rgba(255, 255, 255, 0.8);
+    --bg-card: #ffffff;
+    --bg-lesson: #ffffff;
+    --bg-current: rgba(119, 97, 255, 0.12);
+    --text: #1d1b2e;
+    --muted: #6b6880;
+    --track: rgba(29, 27, 46, 0.12);
+    --shadow: 0 10px 30px rgba(40, 30, 90, 0.12);
+    --primary-light: #5b44e6;
+  }
 }
 
 * {
@@ -21,19 +44,21 @@
   box-sizing: border-box;
 }
 
+[hidden],
+.hidden {
+  display: none !important;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #0a0911;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: var(--text-light);
+  font-family: 'Poppins', system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
   position: relative;
   overflow-x: hidden;
 }
@@ -41,32 +66,28 @@ body {
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(10, 10, 20, 0.95) 0%, rgba(30, 30, 50, 0.8) 100%);
+  inset: 0;
+  background: var(--overlay);
   z-index: -1;
 }
 
 #container {
-max-width: 680;
+  width: 100%;
+  max-width: 680px;
   margin: 20px auto;
   padding: 30px;
-  border-radius: var(--border-radius);
-  background-color: var(--bg-dark);
+  border-radius: var(--radius);
+  background-color: var(--bg-container);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 30px;
-  color: var(--text-light);
   position: relative;
   display: inline-block;
 }
@@ -83,141 +104,248 @@ h1::after {
   border-radius: 2px;
 }
 
+:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* ---------- zakładki dni ---------- */
+
+#tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  position: relative;
+  padding: 10px 0;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* kropka pod dzisiejszym dniem */
+.tab.today::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- baner statusu (gify zostają) ---------- */
+
+#after-school-message {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+#after-school-message:empty {
+  display: none;
+}
+
+#after-school-gif,
+#weekend-message {
+  margin: 10px 0 20px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+#after-school-gif:empty,
+#weekend-message:empty {
+  display: none;
+}
+
+#after-school-gif img,
+#weekend-message img {
+  max-width: 100%;
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto;
+}
+
+/* ---------- timer ---------- */
+
 #timer-container {
   margin: 20px 0;
-  padding: 15px;
-  border-radius: var(--border-radius);
+  padding: 18px 15px;
+  border-radius: var(--radius);
   background-color: var(--bg-card);
-  text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-left: 4px solid var(--primary);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(119, 97, 255, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(119, 97, 255, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(119, 97, 255, 0);
-  }
+  0%   { box-shadow: 0 0 0 0 rgba(119, 97, 255, 0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(119, 97, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(119, 97, 255, 0); }
 }
 
 #timer-text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-right: 10px;
-  color: var(--text-light);
+  color: var(--muted);
 }
 
 #timer {
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--primary-light);
-  display: inline-block;
-  min-width: 90px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
 }
 
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 8px;
-  margin: 20px 0;
-}
-
-th {
-  background-color: var(--primary);
-  color: var(--text-light);
-  padding: 12px;
-  text-align: center;
-  font-weight: 600;
-  position: relative;
-}
-
-th:first-child {
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-}
-
-th:last-child {
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-}
-
-td {
-  padding: 15px 10px;
-  color: var(--text-light);
-  background-color: var(--bg-lesson);
-  transition: var(--transition);
-}
-
-tr.lesson {
-  transition: var(--transition);
-}
-
-tr.lesson:hover td {
-  background-color: rgba(60, 60, 85, 0.95);
-  transform: translateY(-2px);
-}
-
-tr.lesson td:first-child {
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-}
-
-tr.lesson td:last-child {
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-}
-
-.current-lesson td {
-  background-color: var(--bg-current);
-}
-
-.current-lesson td:first-child {
-  border-left: 3px solid var(--primary);
-}
-
-#after-school-message {
-  font-weight: 700;
-  color: var(--accent);
-  font-size: 1.8rem;
-  margin: 30px 0;
-  animation: fade 2s ease-in-out infinite alternate;
-}
-
-@keyframes fade {
-  from { opacity: 0.8; }
-  to { opacity: 1; }
-}
-
-#after-school-gif,
-#weekend-message {
-  margin: 20px 0;
-  border-radius: var(--border-radius);
+#progress {
+  height: 8px;
+  margin: 10px 0 4px;
+  border-radius: 999px;
+  background: var(--track);
   overflow: hidden;
-  box-shadow: var(--shadow);
 }
 
-#after-school-gif img,
-#weekend-message img {
-  max-width: 100%;
-  border-radius: var(--border-radius);
-  display: block;
+#progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--primary);
+  transition: width 1s linear;
 }
+
+#timer-next {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- plan: karty ---------- */
+
+#plan-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 10px 0 14px;
+  color: var(--primary-light);
+}
+
+#lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lesson {
+  --accent-lesson: hsl(var(--hue) 70% 58%);
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px 12px 12px;
+  border-radius: var(--radius);
+  border-left: 5px solid var(--accent-lesson);
+  background: color-mix(in srgb, var(--accent-lesson) 9%, var(--bg-lesson));
+  text-align: left;
+  transition: var(--transition);
+}
+
+.lesson .num {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #111;
+  background: var(--accent-lesson);
+}
+
+.lesson h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.lesson .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.lesson .time {
+  font-variant-numeric: tabular-nums;
+}
+
+.lesson .room {
+  min-width: 52px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: var(--track);
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.1;
+}
+
+.lesson .room small {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.lesson.current {
+  background: color-mix(in srgb, var(--accent-lesson) 22%, var(--bg-lesson));
+  box-shadow: 0 0 0 2px var(--accent-lesson), var(--shadow);
+}
+
+.lesson.next {
+  outline: 2px dashed var(--accent-lesson);
+  outline-offset: -2px;
+}
+
+.empty {
+  padding: 30px 10px;
+  color: var(--muted);
+}
+
+/* ---------- przycisk powiadomień ---------- */
 
 .notification-btn {
   position: fixed;
-  bottom: 30px;
+  bottom: max(30px, env(safe-area-inset-bottom));
   right: 30px;
   background-color: var(--primary);
   color: white;
   border: none;
   border-radius: 30px;
   padding: 12px 25px;
+  font: inherit;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -240,43 +368,52 @@ tr.lesson td:last-child {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-.hidden {
-  display: none;
-}
+/* ---------- responsywność ---------- */
 
-/* Styl dla dni wolnych */
-h2 {
-  font-size: 2rem;
-  margin: 30px 0;
-  color: var(--primary-light);
-}
-
-/* Responsywność */
 @media (max-width: 768px) {
-  #container {
-    padding: 20px 15px;
-    margin: 10px;
+  body {
+    padding: 10px;
   }
-  
+
+  #container {
+    padding: 20px 14px;
+    margin: 10px 0;
+  }
+
   h1 {
     font-size: 1.8rem;
   }
-  
-  table {
-    font-size: 0.9rem;
-  }
-  
-  th, td {
-    padding: 10px 5px;
-  }
-  
+
   #timer {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
-  
+
+  .lesson {
+    grid-template-columns: 38px 1fr auto;
+    gap: 10px;
+  }
+
+  .lesson .num {
+    width: 38px;
+    height: 38px;
+  }
+
   .notification-btn {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #timer-container {
+    animation: none;
+  }
+
+  #progress-bar,
+  .tab,
+  .lesson,
+  .notification-btn {
+    transition: none;
   }
 }
