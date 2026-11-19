@@ -158,7 +158,7 @@
         "start": "08:35",
         "end": "09:20",
         "subject": "WF",
-        "teacher": "Kryska",
+        "teacher": "Maciejczyk",
         "room": "Sił"
     },
     {
@@ -167,7 +167,7 @@
         "start": "09:25",
         "end": "10:10",
         "subject": "Matematyka",
-        "teacher": "Rechotka",
+        "teacher": "Siek",
         "room": "27"
     },
     {
@@ -176,7 +176,7 @@
         "start": "10:20",
         "end": "11:05",
         "subject": "Informatyka",
-        "teacher": "Czarek",
+        "teacher": "Foc",
         "room": "41"
     },
     {
@@ -185,7 +185,7 @@
         "start": "11:10",
         "end": "11:55",
         "subject": "Wychowawcza",
-        "teacher": "Kruk",
+        "teacher": "Kryk",
         "room": "W5"
     },
     {
@@ -194,7 +194,7 @@
         "start": "12:05",
         "end": "12:50",
         "subject": "Witryny i aplikacje",
-        "teacher": "Czarek",
+        "teacher": "Skoczylas",
         "room": "28"
     },
     {
@@ -203,7 +203,7 @@
         "start": "12:55",
         "end": "13:40",
         "subject": "Witryny i aplikacje",
-        "teacher": "Czarek",
+        "teacher": "Skoczylas",
         "room": "28"
     },
     {
@@ -212,7 +212,7 @@
         "start": "13:45",
         "end": "14:30",
         "subject": "Witryny i aplikacje",
-        "teacher": "Czarek",
+        "teacher": "Skoczylas",
         "room": "28"
     },
     {
